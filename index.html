@@ -93,7 +93,9 @@ a.r:hover{color:var(--roed)}
   body{font-size:16px}
   .top{padding:10px 16px 0}
   h1{font-size:18px}
-  .opd{font-size:12px;flex-basis:100%;margin-top:-6px}
+  .top{align-items:center;row-gap:2px}
+  .opd{font-size:12px;flex-basis:100%;order:3}
+  nav a{font-size:15px}
   nav{align-items:center}
   nav a{padding:10px 10px}
   /* Filtre gemmes bag en knap på telefonen */
@@ -134,12 +136,11 @@ a.r:hover{color:var(--roed)}
 </head>
 <body>
 <header>
-  <div class="top"><h1><span class="flag"></span>Danske ryttere</h1><span class="opd" id="opd"></span></div>
+  <div class="top"><h1><span class="flag"></span>Danske ryttere</h1><button class="filterknap" id="filterknap" type="button">Filtre</button><span class="opd" id="opd"></span></div>
   <nav>
     <a href="#resultater" data-v="resultater">Resultater</a>
     <a href="#kommende" data-v="kommende">Kommende løb</a>
     <a href="#ryttere" data-v="ryttere">Ryttere</a>
-    <button class="filterknap" id="filterknap" type="button">Filtre</button>
   </nav>
   <div class="fast">
     <section class="panel" id="holdpanel">
