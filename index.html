@@ -73,7 +73,8 @@ select,input[type=search]{font:inherit;font-size:14px;font-weight:500;padding:7p
 .tabel tr:last-child td{border-bottom:0}
 .tabel .num{text-align:right;white-space:nowrap}
 .plac{display:inline-block;min-width:34px;text-align:center;border-radius:8px;padding:2px 6px;font-weight:800;font-variant-numeric:tabular-nums}
-.p1{background:var(--guld-bg);color:var(--guld)}
+.p1{background:var(--guld-bg);color:var(--guld);display:inline-flex;align-items:center;justify-content:center;gap:3px}
+.medalje{width:15px;height:18px;flex:none}
 .p2{background:var(--soelv-bg);color:var(--roed)}
 .p3{background:var(--bronze-bg);color:var(--roed)}
 .top10{background:var(--roed-svag);color:var(--roed)}
@@ -222,9 +223,11 @@ function opdaterFilterknap(){
 }
 
 // ---- hjælpere
+const MEDALJE = `<svg class="medalje" viewBox="0 0 20 24" aria-hidden="true"><path d="M5 0h4l3 9H8z" fill="#c8102e"/><path d="M11 0h4l-3 9H8z" fill="#1b2d52"/><circle cx="10" cy="15" r="7.5" fill="#f2c230" stroke="#b8860b" stroke-width="1.5"/><path d="M10 10.8l1.3 2.6 2.8.4-2 2 .5 2.8-2.6-1.4-2.6 1.4.5-2.8-2-2 2.8-.4z" fill="#fff6c8"/></svg>`;
 function placBadge(r){
   if (r.pn == null) return `<span class="plac ude">${esc(r.p)}</span>`;
   const k = r.pn===1?"p1":r.pn===2?"p2":r.pn===3?"p3":r.pn<=10?"top10":"";
+  if (r.pn===1) return `<span class="plac p1" title="Sejr">${MEDALJE}1</span>`;
   return `<span class="plac ${k}">${r.pn}</span>`;
 }
 const rytterLink = id => `<a class="r" href="#rytter/${encodeURIComponent(id)}">${esc(D.ryttere[id]?.navn||id)}</a>`;
