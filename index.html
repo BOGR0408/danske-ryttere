@@ -4,7 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Danske ryttere</title>
-<meta name="theme-color" content="#c8102e">
+<meta name="theme-color" content="#1f6b3e">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="manifest" href="manifest.json">
 <link rel="icon" type="image/png" href="ikon-192.png">
 <link rel="apple-touch-icon" href="ikon-180.png">
@@ -13,42 +15,53 @@
 <meta name="apple-mobile-web-app-title" content="Ryttere">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <style>
+/* Farver fra ejerens billede: mørkegrøn, lysegrøn, mint, blågrå, mørkeblå, lilla */
 :root{
-  --bg:#f6f5f2; --panel:#ffffff; --tekst:#1c1c1e; --svag:#6b6b70; --linje:#e4e2dc;
-  --roed:#c8102e; --roed-svag:#fbe9ec; --guld:#b8860b; --guld-bg:#fff4d6; --soelv-bg:#eef0f3; --bronze-bg:#f8eadf;
-  --chip:#efede8; --chip-tekst:#3a3a3e;
+  --bg:#f3f8f5; --panel:#ffffff; --tekst:#1b2d52; --svag:#5a6b87; --linje:#dce5ec; --kant:#a3b8cc;
+  --top:#1f6b3e; --top-svag:#d6ede0;
+  --roed:#1f6b3e; --roed-svag:#e8f5ee; --guld:#1b2d52; --guld-bg:#2bb673; --soelv-bg:#e8f5ee; --bronze-bg:#e8f5ee;
+  --chip:#ffffff; --chip-tekst:#1b2d52; --valgt:#1b2d52; --valgt-tekst:#ffffff; --lilla:#3a1f4a;
 }
 @media (prefers-color-scheme: dark){
   :root{
-    --bg:#121214; --panel:#1c1c1f; --tekst:#ececef; --svag:#9a9aa2; --linje:#2e2e33;
-    --roed:#ff4d61; --roed-svag:#3a1a20; --guld:#f2c14e; --guld-bg:#3a3017; --soelv-bg:#2a2d33; --bronze-bg:#3a2a1f;
-    --chip:#2a2a2f; --chip-tekst:#d8d8de;
+    --bg:#0f1a16; --panel:#16241e; --tekst:#e6eef5; --svag:#a3b8cc; --linje:#24362e; --kant:#3a5266;
+    --top:#174f2e; --top-svag:#c3e3d0;
+    --roed:#2bb673; --roed-svag:#173a29; --guld:#0f1a16; --guld-bg:#2bb673; --soelv-bg:#173a29; --bronze-bg:#173a29;
+    --chip:#1c2d26; --chip-tekst:#e6eef5; --valgt:#2bb673; --valgt-tekst:#0f1a16; --lilla:#c9a6da;
   }
 }
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--tekst);font:15px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
-header{background:var(--panel);border-bottom:1px solid var(--linje);position:sticky;top:0;z-index:5}
-.top{max-width:1200px;margin:0 auto;padding:14px 16px 0;display:flex;align-items:baseline;gap:16px;flex-wrap:wrap}
-h1{font-size:20px;margin:0;display:flex;align-items:center;gap:10px}
+body{margin:0;background:var(--bg);color:var(--tekst);font:15px/1.45 Montserrat,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+header{background:var(--bg);position:sticky;top:0;z-index:5}
+/* Grøn top i fuld bredde */
+.top,nav{background:var(--top);box-shadow:0 0 0 100vmax var(--top);clip-path:inset(0 -100vmax)}
+.stribe{height:5px;display:grid;grid-template-columns:repeat(6,1fr)}
+.stribe i:nth-child(1){background:#1f6b3e}.stribe i:nth-child(2){background:#2bb673}.stribe i:nth-child(3){background:#e8f5ee}
+.stribe i:nth-child(4){background:#a3b8cc}.stribe i:nth-child(5){background:#1b2d52}.stribe i:nth-child(6){background:#3a1f4a}
+.kilde{font-size:12px;color:var(--svag);margin:24px 0 8px}
+.top{max-width:1200px;margin:0 auto;padding:16px 16px 4px;display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;color:#fff}
+h1{font-size:22px;margin:0;display:flex;align-items:center;gap:10px;font-weight:500}
+h1 b{font-weight:800}
 .flag{display:inline-block;width:26px;height:18px;border-radius:3px;background:
   linear-gradient(90deg,transparent 8px,#fff 8px,#fff 12px,transparent 12px),
   linear-gradient(0deg,transparent 7px,#fff 7px,#fff 11px,transparent 11px),#c8102e}
-.opd{color:var(--svag);font-size:13px}
-nav{max-width:1200px;margin:0 auto;padding:0 16px;display:flex;gap:4px;overflow-x:auto}
-nav a{padding:10px 14px;color:var(--svag);text-decoration:none;border-bottom:3px solid transparent;white-space:nowrap;font-weight:500}
-nav a.aktiv{color:var(--tekst);border-color:var(--roed)}
+.opd{color:var(--top-svag);font-size:13px}
+nav{max-width:1200px;margin:0 auto;padding:8px 16px 0;display:flex;gap:4px;overflow-x:auto}
+nav a{padding:10px 16px;color:#fff;text-decoration:none;border-radius:10px 10px 0 0;white-space:nowrap;font-weight:600}
+nav a:hover{background:rgba(255,255,255,.12)}
+nav a.aktiv{color:var(--roed);background:var(--bg);font-weight:700}
 main{max-width:1200px;margin:0 auto;padding:16px}
 .fast{max-width:1200px;margin:0 auto;padding:10px 16px 0}
 .fast .panel{margin-bottom:10px;padding:10px 14px}
 .fast:empty,#filterslot:empty{display:none}
-header{box-shadow:0 2px 8px rgba(0,0,0,.06)}
-.panel{background:var(--panel);border:1px solid var(--linje);border-radius:10px;padding:14px;margin-bottom:14px}
+header{box-shadow:0 2px 8px rgba(27,45,82,.08)}
+.panel{background:var(--panel);border:1px solid var(--linje);border-radius:14px;padding:14px;margin-bottom:14px}
 .filtre{display:flex;flex-wrap:wrap;gap:10px;align-items:end}
-.filtre label{display:flex;flex-direction:column;font-size:12px;color:var(--svag);gap:3px}
-select,input[type=search]{font:inherit;font-size:14px;padding:6px 8px;border:1px solid var(--linje);border-radius:6px;background:var(--bg);color:var(--tekst);min-width:150px}
+.filtre label{display:flex;flex-direction:column;font-size:12px;color:var(--svag);gap:3px;font-weight:600}
+select,input[type=search]{font:inherit;font-size:14px;font-weight:500;padding:7px 9px;border:1.5px solid var(--kant);border-radius:8px;background:var(--panel);color:var(--tekst);min-width:150px}
 .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
-.chip{border:1px solid transparent;background:var(--chip);color:var(--chip-tekst);border-radius:999px;padding:4px 11px;font-size:13px;cursor:pointer;user-select:none}
-.chip.valgt{background:var(--roed);color:#fff}
+.chip{border:1.5px solid var(--kant);background:var(--chip);color:var(--chip-tekst);border-radius:999px;padding:4px 12px;font-size:13px;font-weight:600;cursor:pointer;user-select:none}
+.chip.valgt{background:var(--valgt);border-color:var(--valgt);color:var(--valgt-tekst)}
 .chip .n{opacity:.7;margin-left:4px;font-size:12px}
 .holdhead{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
 .holdhead b{font-size:13px}
@@ -59,10 +72,10 @@ select,input[type=search]{font:inherit;font-size:14px;padding:6px 8px;border:1px
 .tabel td{padding:7px 8px;border-bottom:1px solid var(--linje);vertical-align:top}
 .tabel tr:last-child td{border-bottom:0}
 .tabel .num{text-align:right;white-space:nowrap}
-.plac{display:inline-block;min-width:34px;text-align:center;border-radius:6px;padding:1px 6px;font-weight:600;font-variant-numeric:tabular-nums}
+.plac{display:inline-block;min-width:34px;text-align:center;border-radius:8px;padding:2px 6px;font-weight:800;font-variant-numeric:tabular-nums}
 .p1{background:var(--guld-bg);color:var(--guld)}
-.p2{background:var(--soelv-bg)}
-.p3{background:var(--bronze-bg)}
+.p2{background:var(--soelv-bg);color:var(--roed)}
+.p3{background:var(--bronze-bg);color:var(--roed)}
 .top10{background:var(--roed-svag);color:var(--roed)}
 .ude{color:var(--svag);font-weight:400}
 .dato{white-space:nowrap;color:var(--svag);font-variant-numeric:tabular-nums}
@@ -70,8 +83,8 @@ select,input[type=search]{font:inherit;font-size:14px;padding:6px 8px;border:1px
 a.r{color:inherit;text-decoration:none;font-weight:500}
 a.r:hover{color:var(--roed)}
 .svag{color:var(--svag)}
-.ryd{font:inherit;font-size:14px;padding:6px 12px;border-radius:6px;border:1px solid var(--roed);background:transparent;color:var(--roed);cursor:pointer;margin-left:auto}
-.ryd:hover{background:var(--roed);color:#fff}
+.ryd{font:inherit;font-size:14px;font-weight:600;padding:6px 12px;border-radius:8px;border:1.5px solid var(--lilla);background:transparent;color:var(--lilla);cursor:pointer;margin-left:auto}
+.ryd:hover{background:var(--lilla);color:var(--panel)}
 .mere{display:block;margin:12px auto 0;padding:8px 16px;border-radius:6px;border:1px solid var(--linje);background:var(--panel);color:var(--tekst);cursor:pointer;font:inherit}
 .kort{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
 .rk{background:var(--panel);border:1px solid var(--linje);border-radius:10px;padding:12px 14px;text-decoration:none;color:inherit;display:block}
@@ -100,8 +113,8 @@ a.r:hover{color:var(--roed)}
   nav a{padding:10px 10px}
   /* Filtre gemmes bag en knap på telefonen */
   .filterknap{display:inline-flex;align-items:center;gap:6px;margin-left:auto;font:inherit;font-size:14px;padding:6px 12px;
-    border-radius:999px;border:1px solid var(--linje);background:var(--panel);color:var(--tekst);cursor:pointer;white-space:nowrap}
-  .filterknap .antal{background:var(--roed);color:#fff;border-radius:999px;font-size:12px;padding:0 7px}
+    border-radius:999px;border:0;background:#2bb673;color:#1b2d52;font-weight:700;cursor:pointer;white-space:nowrap;min-height:38px}
+  .filterknap .antal{background:#1b2d52;color:#fff;border-radius:999px;font-size:12px;padding:0 7px}
   .fast{display:none;max-height:70vh;overflow-y:auto;padding:8px 12px 0}
   header.aaben .fast{display:block}
   .chips{flex-wrap:nowrap;overflow-x:auto;padding-bottom:4px;-webkit-overflow-scrolling:touch}
@@ -136,12 +149,13 @@ a.r:hover{color:var(--roed)}
 </head>
 <body>
 <header>
-  <div class="top"><h1><span class="flag"></span>Danske ryttere</h1><button class="filterknap" id="filterknap" type="button">Filtre</button><span class="opd" id="opd"></span></div>
+  <div class="top"><h1><span class="flag"></span><span><b>Danske</b> ryttere</span></h1><button class="filterknap" id="filterknap" type="button">Filtre</button><span class="opd" id="opd"></span></div>
   <nav>
     <a href="#resultater" data-v="resultater">Resultater</a>
     <a href="#kommende" data-v="kommende">Kommende løb</a>
     <a href="#ryttere" data-v="ryttere">Ryttere</a>
   </nav>
+  <div class="stribe" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
   <div class="fast">
     <section class="panel" id="holdpanel">
       <div class="holdhead"><b>Hold</b><span><button class="lnk" id="alleHold">Vis alle hold</button></span></div>
@@ -152,6 +166,7 @@ a.r:hover{color:var(--roed)}
 </header>
 <main>
   <div id="visning"></div>
+  <p class="kilde">Kilde: UCI DataRide</p>
 </main>
 
 <script>
